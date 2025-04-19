@@ -186,7 +186,7 @@ start_time := clock_timestamp();
         RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
 
         batch_end_time := clock_timestamp();
-        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM batch_end_time - batch_start_time);
+        RAISE NOTICE 'Total Duration: % seconds', EXTRACT(EPOCH FROM batch_end_time - batch_start_time);
     
 END;
 $$
