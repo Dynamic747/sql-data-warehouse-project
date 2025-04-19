@@ -1,8 +1,10 @@
-# sql-data-warehouse-project
+## __sql-data-warehouse-project__
 Building a modern data warehouse with postgres, including ETL processes, data modeling, and analytics
 
-Welcome to the Data Warehouse and Analytics Project repository! 🚀
+__Welcome to the Data Warehouse and Analytics Project repository!__ 🚀
 This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+
+---
 
 This project involves:
 
@@ -12,6 +14,7 @@ Data Modeling: Developing fact and dimension tables optimized for analytical que
 Analytics & Reporting: Creating SQL-based reports and dashboards for actionable insights.
 🎯 This repository is an excellent resource for professionals and students looking to showcase expertise in:
 
+
 SQL Development
 Data Architect
 Data Engineering
@@ -19,7 +22,9 @@ ETL Pipeline Developer
 Data Modeling
 Data Analytics
 
-Building the Data Warehouse (Data Engineering)
+---
+
+##__Building the Data Warehouse (Data Engineering)__
 Objective
 Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
 
@@ -30,7 +35,9 @@ Integration: Combine both sources into a single, user-friendly data model design
 Scope: Focus on the latest dataset only; historization of data is not required.
 Documentation: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
 
-BI: Analytics & Reporting (Data Analysis)
+---
+
+##__BI: Analytics & Reporting (Data Analysis)__
 Objective
 Develop SQL-based analytics to deliver detailed insights into:
 
