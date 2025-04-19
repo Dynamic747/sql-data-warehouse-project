@@ -29,7 +29,15 @@ DECLARE
     l_before_crm_sales_details INT;
     l_after_crm_sales_details INT;
 
+    start_time TIMESTAMP;
+    end_time TIMESTAMP;
+
+    batch_start_time TIMESTAMP;
+    batch_end_time TIMESTAMP;
+
+
     BEGIN
+        batch_start_time := clock_timestamp();
 
         RAISE NOTICE '=================================';
         RAISE NOTICE 'Loading Bronze Layer';
@@ -37,8 +45,10 @@ DECLARE
 
         RAISE NOTICE 'Loading CRM Tables';
 
+start_time := clock_timestamp();
     -- CRM Customer Info
     BEGIN
+        
         SELECT COUNT(*) INTO l_before_crm_cust_info FROM bronze.crm_cust_info;
 
         RAISE NOTICE 'Truncate crm_cust_info table';
@@ -59,6 +69,10 @@ DECLARE
             RAISE NOTICE 'Error loading crm_cust_info: %', SQLERRM;
     END;
 
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
+
+start_time := clock_timestamp();
     -- CRM prd info
     BEGIN
         SELECT COUNT(*) INTO l_before_crm_prd_info FROM bronze.crm_prd_info;
@@ -80,8 +94,11 @@ DECLARE
         WHEN OTHERS THEN
             RAISE NOTICE 'Error loading crm_prd_info: %', SQLERRM;
     END;  
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
 
     -- CRM sales details
+start_time := clock_timestamp();
     BEGIN
         SELECT COUNT(*) INTO l_before_crm_sales_details FROM bronze.crm_sales_details;
 
@@ -101,8 +118,10 @@ DECLARE
 
     EXCEPTION
         WHEN OTHERS THEN
-            RAISE NOTICE 'Rows inserted into crm_sales_details: %', SQLERRM;
+            RAISE NOTICE 'Error loading crm_sales_details: %', SQLERRM;
     END;
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
 
         
         RAISE NOTICE '------------------';
@@ -110,6 +129,7 @@ DECLARE
         RAISE NOTICE '------------------';
 
     -- erp cust_az12 table
+start_time := clock_timestamp();
     BEGIN
 
         RAISE NOTICE 'Truncate erp_cust_az12 table';
@@ -124,8 +144,11 @@ DECLARE
         WHEN OTHERS THEN
         RAISE NOTICE 'Error loading cust_az12: %', SQLERRM;
     END;
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
     
     -- erp_LOC_A101
+start_time := clock_timestamp();
     BEGIN
         
         RAISE NOTICE 'Truncate erp_LOC_A101 table';
@@ -140,8 +163,11 @@ DECLARE
         WHEN OTHERS THEN
         RAISE NOTICE 'Error loading LOC_A101: %', SQLERRM;
     END;
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
 
     -- erp_PX_CAT_G1V2
+start_time := clock_timestamp();
     BEGIN 
         
         RAISE NOTICE 'Truncate erp_PX_CAT_G1V2 table';
@@ -156,8 +182,12 @@ DECLARE
         WHEN OTHERS THEN
         RAISE NOTICE 'Error loading PX_CAT_G1V2: %', SQLERRM;
     END;
+        end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM end_time - start_time);
 
+        batch_end_time := clock_timestamp();
+        RAISE NOTICE 'Duration: % seconds', EXTRACT(EPOCH FROM batch_end_time - batch_start_time);
+    
 END;
 $$
-
 
