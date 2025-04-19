@@ -24,7 +24,7 @@ Data Analytics
 
 ---
 
-##__Building the Data Warehouse (Data Engineering)__
+## __Building the Data Warehouse (Data Engineering)__
 Objective
 Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
 
@@ -37,7 +37,7 @@ Documentation: Provide clear documentation of the data model to support both bus
 
 ---
 
-##__BI: Analytics & Reporting (Data Analysis)__
+## __BI: Analytics & Reporting (Data Analysis)__
 Objective
 Develop SQL-based analytics to deliver detailed insights into:
 
