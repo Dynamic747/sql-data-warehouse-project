@@ -1,4 +1,8 @@
--- Create Dimension Tables
+-- Create Dimension And Fact Tables
+
+/* The purpose of this script is to create a set of dimension and fact tables using the typical star schema where a single fact 
+object is surrounded by single dimension objects, for this use case we have transcational data as the fact table with two other
+dimension tables for customer and product information */
 
 CREATE OR REPLACE VIEW gold.dim_customers AS
 
